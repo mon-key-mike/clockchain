@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClockChain a BlockChain verifying the immutability of Time Passage and Space Time Reality</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+
+        #clock {
+            font-size: 3rem;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div id="clock"></div>
+    <h>ClockChain a BlockChain verifying the immutability of Time Passage and Space Time Reality</h>
+    <script>
+        function updateTime() {
+            const clockElement = document.getElementById('clock');
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            clockElement.textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        setInterval(updateTime, 6000);  // Update every second
+        updateTime();  // Initial call to display the time immediately
+    </script>
+</body>
+</html>
