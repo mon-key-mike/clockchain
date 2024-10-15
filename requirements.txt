@@ -20,6 +20,7 @@ constantly==15.1.0
 cryptography==2.8
 dbus-python==1.2.16
 distro==1.4.0
+datatime
 distro-info==0.23+ubuntu1.1
 docutils==0.20.1
 entrypoints==0.3
@@ -116,3 +117,4 @@ Werkzeug==0.16.1
 wsproto==1.2.0
 zipp==1.0.0
 zope.interface==4.7.1
+requests
