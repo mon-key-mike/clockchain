@@ -1,0 +1,35 @@
+// Send ether to the specified address
+function sendEther(toAddress) {
+        // Get the latest gas price
+        web3.eth.getGasPrice().then(function(gasPrice) {
+                // Calculate the transaction fee
+                const gasPriceHex = web3.utils.toHex(gasPrice);
+                const gasLimitHex = web3.utils.toHex(21000);
+                const valueHex = web3.utils.toHex(web3.utils.toWei('0.1', 'ether'));
+                const nonce = web3.utils.toHex(web3.eth.getTransactionCount(faucetAccount.address));
+                const txParams = {
+                    nonce: nonce,
+                    gasPrice: gasPriceHex,
+                    gasLimit: gasLimitHex,
+                    to: toAddress,
+                    value: valueHex,
+                    data: '0x'
+                };
+
+                // Sign the transaction with the faucet account's private key
+                const tx = new Tx(txParams, { 'chain': 'Sepolia' });
+                tx.sign(faucetAccount.privateKey);
+
+                // Serialize the signed transaction and send it to the Sepolia Testnet
+                const serializedTx = tx.serialize();
+                web3.eth.sendSignedTransaction('0x' + serializedTx.toString('hex')).then(function(receipt) {
+                        console.log('Transaction hash:', receipt.transactionHash);
+                        console.log('Gas used:', receipt.gasUsed);
+                }).catch(function(error) {
+                        console.error('Transaction error:', error);
+                });
+        });
+}
+
+// Send ether to the specified address
+sendEther('0xYourAddress');
